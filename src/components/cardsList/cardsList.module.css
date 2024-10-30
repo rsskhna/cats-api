@@ -1,0 +1,10 @@
+.list {
+  width: 100%;
+  max-width: 1316px;
+
+  display: grid;
+
+  grid-template-columns: repeat(5, 225px);
+  grid-template-rows: repeat(auto-fit, 225px);
+  grid-gap: 48px;
+}
