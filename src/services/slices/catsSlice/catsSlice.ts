@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getCatsApi } from '../../../utils/cats-api';
 import { TCat } from '@utils-types';
 
@@ -22,7 +22,11 @@ export const initialState: TCatsState = {
 export const catsSlice = createSlice({
   name: 'cats',
   initialState,
-  reducers: {},
+  reducers: {
+    deleteCard: (state, action: PayloadAction<number>) => {
+      state.cats.splice(action.payload, 1);
+    }
+  },
   selectors: {
     selectCats: (state) => state.cats,
     selectLoading: (state) => state.loading,
@@ -39,7 +43,7 @@ export const catsSlice = createSlice({
         state.error = action.error.message ? action.error.message : null;
       })
       .addCase(getCats.fulfilled, (state, action) => {
-        state.cats = action.payload;
+        state.cats = state.cats.concat(action.payload);
         state.loading = false;
       });
     // .addDefaultCase((state, action) => {
@@ -49,4 +53,5 @@ export const catsSlice = createSlice({
 });
 
 export const catsReducer = catsSlice.reducer;
+export const { deleteCard } = catsSlice.actions;
 export const { selectCats, selectLoading } = catsSlice.selectors;

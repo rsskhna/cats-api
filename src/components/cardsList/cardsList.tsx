@@ -1,27 +1,17 @@
 import styles from './cardsList.module.css';
 import Card from '../card/card';
 import { TCat } from '../../utils/types';
-import { FC } from 'react';
-import { Spin } from 'antd';
-import { useSelector } from '../../services/store';
-import { selectLoading } from '../../services/slices/catsSlice/catsSlice';
+import React, { FC } from 'react';
 
 type TCardsListComponent = {
   cards: TCat[];
 };
 
-const cardsList: FC<TCardsListComponent> = ({ cards }) => {
-  const loading = useSelector(selectLoading);
-
-  if (loading) {
-    return <Spin size={'large'} />;
-  }
-  return (
-    <ul className={styles.list}>
-      {cards.map((card, index) => (
-        <Card imageName={card.id} imageUrl={card.url} key={index} />
-      ))}
-    </ul>
-  );
-};
+const cardsList: FC<TCardsListComponent> = ({ cards }) => (
+  <ul className={styles.list}>
+    {cards.map((card, index) => (
+      <Card imageUrl={card.url} key={card.id} cardIndex={index} />
+    ))}
+  </ul>
+);
 export default cardsList;
