@@ -3,23 +3,25 @@ import Card from '../card/card';
 import { TCat } from '../../utils/types';
 import { FC } from 'react';
 import { Spin } from 'antd';
+import { useSelector } from '../../services/store';
+import { selectLoading } from '../../services/slices/catsSlice/catsSlice';
 
 type TCardsListComponent = {
   cards: TCat[];
 };
 
 const cardsList: FC<TCardsListComponent> = ({ cards }) => {
-  if (cards) {
-    return (
-      <ul className={styles.list}>
-        {cards.map((card, index) => (
-          <Card imageName={card.id} imageUrl={card.url} key={index} />
-        ))}
-      </ul>
-    );
+  const loading = useSelector(selectLoading);
+
+  if (loading) {
+    return <Spin size={'large'} />;
   }
-
-  return <Spin />;
+  return (
+    <ul className={styles.list}>
+      {cards.map((card, index) => (
+        <Card imageName={card.id} imageUrl={card.url} key={index} />
+      ))}
+    </ul>
+  );
 };
-
 export default cardsList;

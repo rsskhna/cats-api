@@ -12,7 +12,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCats);
+    dispatch(getCats());
   }, [dispatch]);
 
   return (

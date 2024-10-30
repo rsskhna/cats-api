@@ -42,6 +42,9 @@ export const catsSlice = createSlice({
         state.cats = action.payload;
         state.loading = false;
       });
+    // .addDefaultCase((state, action) => {
+    //   console.log('def');
+    // });
   }
 });
 
