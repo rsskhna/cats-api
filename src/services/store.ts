@@ -6,9 +6,11 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 import { catsReducer } from './slices/catsSlice/catsSlice';
+import { breedsReducer } from './slices/breedsSlice/breedsSlice';
 
 export const rootReducer = combineReducers({
-  cats: catsReducer
+  cats: catsReducer,
+  breeds: breedsReducer
 });
 
 export const store = configureStore({

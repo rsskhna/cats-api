@@ -1,10 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getCatsApi } from '../../../utils/cats-api';
+import { filterCatsApi, getCatsApi } from '../../../utils/cats-api';
 import { TCat } from '@utils-types';
 
 export const getCats = createAsyncThunk(
   'cats/getAll',
   async () => await getCatsApi()
+);
+
+export const getSpecificCats = createAsyncThunk(
+  'specificCats/getAll',
+  async (breedId: string) => await filterCatsApi(breedId)
 );
 
 type TCatsState = {
@@ -25,6 +30,9 @@ export const catsSlice = createSlice({
   reducers: {
     deleteCard: (state, action: PayloadAction<number>) => {
       state.cats.splice(action.payload, 1);
+    },
+    setCatsState: (state, action) => {
+      state.cats = action.payload;
     }
   },
   selectors: {
@@ -45,13 +53,22 @@ export const catsSlice = createSlice({
       .addCase(getCats.fulfilled, (state, action) => {
         state.cats = state.cats.concat(action.payload);
         state.loading = false;
+      })
+      .addCase(getSpecificCats.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getSpecificCats.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message ? action.error.message : null;
+      })
+      .addCase(getSpecificCats.fulfilled, (state, action) => {
+        state.cats = state.cats.concat(action.payload);
+        state.loading = false;
       });
-    // .addDefaultCase((state, action) => {
-    //   console.log('def');
-    // });
   }
 });
 
 export const catsReducer = catsSlice.reducer;
-export const { deleteCard } = catsSlice.actions;
+export const { deleteCard, setCatsState } = catsSlice.actions;
 export const { selectCats, selectLoading } = catsSlice.selectors;

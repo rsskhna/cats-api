@@ -8,9 +8,7 @@ const container = document.getElementById('root') as HTMLElement;
 const root = ReactDOMClient.createRoot(container!);
 
 root.render(
-  <StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
