@@ -10,10 +10,7 @@ const checkResponse = <T>(res: Response): Promise<T> =>
 export const getCatsApi = () =>
   fetch(`${URL}/images/search?limit=5`)
     .then((res) => checkResponse<TCat[]>(res))
-    .then((data) => {
-      console.log('all cats');
-      return data;
-    });
+    .then((data) => data);
 
 export const getBreedsApi = () =>
   fetch(`${URL}/breeds`)
@@ -37,7 +34,4 @@ export const filterCatsApi = (breedId: string) =>
     }
   })
     .then((res) => checkResponse<TCat[]>(res))
-    .then((data) => {
-      console.log('breeded cat');
-      return data;
-    });
+    .then((data) => data);
