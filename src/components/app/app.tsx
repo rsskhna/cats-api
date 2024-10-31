@@ -26,7 +26,7 @@ const App = () => {
   const loading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const { ref, inView } = useInView({
-    threshold: 1
+    threshold: 0.1
   });
   const [selectValue, setSelectValue] = useState('all');
 
