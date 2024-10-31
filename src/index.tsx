@@ -1,4 +1,4 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import App from './components/app/app';
 import { Provider } from 'react-redux';

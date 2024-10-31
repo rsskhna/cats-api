@@ -1,4 +1,4 @@
-import { TBreed, TBreedResponse, TCat } from '@utils-types';
+import { TBreed, TBreedResponse, TCat, TThoroughbredCat } from '@utils-types';
 
 export const URL = process.env.CATS_API_URL;
 const API_KEY =
@@ -8,7 +8,7 @@ const checkResponse = <T>(res: Response): Promise<T> =>
   res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 
 export const getCatsApi = () =>
-  fetch(`${URL}/images/search?limit=5`)
+  fetch(`${URL}/images/search?limit=10`)
     .then((res) => checkResponse<TCat[]>(res))
     .then((data) => data);
 
@@ -27,11 +27,22 @@ export const getBreedsApi = () =>
     });
 
 export const filterCatsApi = (breedId: string) =>
-  fetch(`${URL}/images/search?limit=5&breed_ids=${breedId}`, {
+  fetch(`${URL}/images/search?limit=10&breed_ids=${breedId}`, {
     method: 'GET',
     headers: {
       'x-api-key': API_KEY
     }
   })
-    .then((res) => checkResponse<TCat[]>(res))
-    .then((data) => data);
+    .then((res) => checkResponse<TThoroughbredCat[]>(res))
+    .then((data) => {
+      const newData: TCat[] = [];
+      data.forEach((catInfo) => {
+        newData.push({
+          id: catInfo.id,
+          url: catInfo.url,
+          width: catInfo.width,
+          height: catInfo.height
+        });
+      });
+      return newData;
+    });

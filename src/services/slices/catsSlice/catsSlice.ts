@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { filterCatsApi, getCatsApi } from '../../../utils/cats-api';
-import { TCat } from '@utils-types';
+import { TCat, TThoroughbredCat } from '@utils-types';
 
 export const getCats = createAsyncThunk(
   'cats/getAll',
@@ -51,7 +51,7 @@ export const catsSlice = createSlice({
         state.error = action.error.message ? action.error.message : null;
       })
       .addCase(getCats.fulfilled, (state, action) => {
-        state.cats = state.cats.concat(action.payload);
+        state.cats.push(...action.payload);
         state.loading = false;
       })
       .addCase(getSpecificCats.pending, (state) => {
@@ -63,7 +63,7 @@ export const catsSlice = createSlice({
         state.error = action.error.message ? action.error.message : null;
       })
       .addCase(getSpecificCats.fulfilled, (state, action) => {
-        state.cats = state.cats.concat(action.payload);
+        state.cats.push(...action.payload);
         state.loading = false;
       });
   }

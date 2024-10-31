@@ -15,15 +15,12 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react-jsx",
-    "types": ["node", "jest"],
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
-      "@pages": ["src/pages"],
       "@components": ["src/components"],
-      "@ui": ["src/components/ui"],
-      "@ui-pages": ["src/components/ui/pages"],
       "@utils-types": ["src/utils/types"],
-      "@api": ["src/utils/burger-api.ts"],
+      "@api": ["src/utils/cats-api.ts"],
       "@slices": ["src/services/slices"],
       "@selectors": ["src/services/selectors"]
     }

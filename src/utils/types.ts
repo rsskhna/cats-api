@@ -50,3 +50,5 @@ export type TBreedResponse = TBreed & {
   hypoallergenic: number;
   reference_image_id: string;
 };
+
+export type TThoroughbredCat = TBreedResponse & TCat;

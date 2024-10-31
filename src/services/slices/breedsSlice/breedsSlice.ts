@@ -42,7 +42,7 @@ export const breedsSlice = createSlice({
         state.error = action.error.message ? action.error.message : null;
       })
       .addCase(getBreeds.fulfilled, (state, action) => {
-        state.breeds = state.breeds.concat(action.payload);
+        state.breeds = action.payload;
         state.loading = false;
       });
   }
