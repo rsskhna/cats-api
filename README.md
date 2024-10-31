@@ -12,9 +12,13 @@ api: https://thecatapi.com
 - React
 - Redux
 - Redux Toolkit
-- Ant Design
 - React testing library
 - Jest
+- Ant Design
+
+  - легко интегрировать компоненты Ant Design в проект => экономия времени
+  - подробная, доступная документация
+  - гибкость в настройке компонентов под свои нужды
 
 ----
 
