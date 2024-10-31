@@ -14,12 +14,7 @@ type TBreedsState = {
 };
 
 export const initialState: TBreedsState = {
-  breeds: [
-    {
-      id: 'all',
-      name: 'All breeds'
-    }
-  ],
+  breeds: [],
   loading: false,
   error: null
 };
@@ -42,7 +37,13 @@ export const breedsSlice = createSlice({
         state.error = action.error.message ? action.error.message : null;
       })
       .addCase(getBreeds.fulfilled, (state, action) => {
-        state.breeds = action.payload;
+        state.breeds = [
+          {
+            id: 'all',
+            name: 'All breeds'
+          },
+          ...action.payload
+        ];
         state.loading = false;
       });
   }

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { filterCatsApi, getCatsApi } from '../../../utils/cats-api';
-import { TCat, TThoroughbredCat } from '@utils-types';
+import { TCat } from '@utils-types';
 
 export const getCats = createAsyncThunk(
   'cats/getAll',

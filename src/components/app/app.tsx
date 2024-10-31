@@ -45,6 +45,7 @@ const App = () => {
     } else {
       dispatch(getCats());
     }
+    console.log(cats.length);
   }, [inView]);
 
   return (

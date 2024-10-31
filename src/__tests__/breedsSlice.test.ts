@@ -22,7 +22,7 @@ describe('breedsReducer actions tests', () => {
     }
   ];
 
-  it('feeds fulfilled', () => {
+  it('getBreeds fulfilled', () => {
     const actualState = breedsReducer(
       { ...initialState, breeds: breedsData, loading: true },
       getBreeds.fulfilled(breedsData, '')
@@ -35,7 +35,7 @@ describe('breedsReducer actions tests', () => {
     });
   });
 
-  it('feeds pending', () => {
+  it('getBreeds pending', () => {
     const testError = new Error('error');
 
     const actualState = breedsReducer(
@@ -48,7 +48,7 @@ describe('breedsReducer actions tests', () => {
     });
   });
 
-  it('feeds rejected', () => {
+  it('getBreeds rejected', () => {
     const testError = new Error('error');
 
     const actualState = breedsReducer(

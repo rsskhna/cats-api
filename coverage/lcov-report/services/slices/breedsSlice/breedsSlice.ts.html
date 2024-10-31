@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.22% </span>
-                <span class="quiet">Statements</span>
-                <span class='fraction'>51/53</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
                 <span class="strong">77.77% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>7/9</span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>42/54</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.22% </span>
+                <span class="strong">50% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>1/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">77.77% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>51/53</span>
+                <span class='fraction'>42/54</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -116,7 +116,8 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -147,19 +148,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -175,7 +177,7 @@ import { TBreed } from '@utils-types';
 &nbsp;
 export const getBreeds = createAsyncThunk(
   'breeds/getAll',
-  async () =&gt; <span class="branch-0 cbranch-no" title="branch not covered" >await getBreedsApi()</span>
+  async () =&gt; await getBreedsApi()
 );
 &nbsp;
 type TBreedsState = {
@@ -185,12 +187,7 @@ type TBreedsState = {
 };
 &nbsp;
 export const initialState: TBreedsState = {
-  breeds: [
-    {
-      id: 'all',
-      name: 'All breeds'
-    }
-  ],
+  breeds: [],
   loading: false,
   error: null
 };
@@ -200,20 +197,26 @@ export const breedsSlice = createSlice({
   initialState,
   reducers: {},
   selectors: {
-    selectBreeds: (state) =&gt; state.breeds
+    selectBreeds: <span class="fstat-no" title="function not covered" >(state) =&gt; state.</span>breeds
   },
   extraReducers: (builder) =&gt; {
     builder
       .addCase(getBreeds.pending, (state) =&gt; {
-        state.loading = true;
-        state.error = null;
+<span class="cstat-no" title="statement not covered" >        state.loading = true;</span>
+<span class="cstat-no" title="statement not covered" >        state.error = null;</span>
       })
       .addCase(getBreeds.rejected, (state, action) =&gt; {
-        state.loading = false;
-        state.error = action.error.message ? action.error.message <span class="branch-0 cbranch-no" title="branch not covered" >: null;</span>
+<span class="cstat-no" title="statement not covered" >        state.loading = false;</span>
+<span class="cstat-no" title="statement not covered" >        state.error = action.error.message ? action.error.message : null;</span>
       })
       .addCase(getBreeds.fulfilled, (state, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.breeds = action.payload;</span>
+<span class="cstat-no" title="statement not covered" >        state.breeds = [</span>
+<span class="cstat-no" title="statement not covered" >          {</span>
+<span class="cstat-no" title="statement not covered" >            id: 'all',</span>
+<span class="cstat-no" title="statement not covered" >            name: 'All breeds'</span>
+<span class="cstat-no" title="statement not covered" >          },</span>
+<span class="cstat-no" title="statement not covered" >          ...action.payload</span>
+<span class="cstat-no" title="statement not covered" >        ];</span>
 <span class="cstat-no" title="statement not covered" >        state.loading = false;</span>
       });
   }
@@ -229,7 +232,7 @@ export const { selectBreeds } = breedsSlice.selectors;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-31T13:59:11.519Z
+                at 2024-10-31T19:05:31.341Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
