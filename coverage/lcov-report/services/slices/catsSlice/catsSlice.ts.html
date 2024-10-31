@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.83% </span>
+                <span class="strong">85.13% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>65/74</span>
+                <span class='fraction'>63/74</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>8/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.83% </span>
+                <span class="strong">85.13% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>65/74</span>
+                <span class='fraction'>63/74</span>
             </div>
         
             
@@ -182,6 +182,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -194,16 +202,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -217,7 +217,7 @@ import { TCat, TThoroughbredCat } from '@utils-types';
 &nbsp;
 export const getCats = createAsyncThunk(
   'cats/getAll',
-  async () =&gt; await getCatsApi()
+  async () =&gt; <span class="branch-0 cbranch-no" title="branch not covered" >await getCatsApi()</span>
 );
 &nbsp;
 export const getSpecificCats = createAsyncThunk(
@@ -249,35 +249,35 @@ export const catsSlice = createSlice({
 <span class="cstat-no" title="statement not covered" >    }</span>
   },
   selectors: {
-    selectCats: <span class="fstat-no" title="function not covered" >(state) =&gt; state.</span>cats,
-    selectLoading: <span class="fstat-no" title="function not covered" >(state) =&gt; state.</span>loading,
+    selectCats: (state) =&gt; state.cats,
+    selectLoading: (state) =&gt; state.loading,
     getErrorSelector: <span class="fstat-no" title="function not covered" >(state) =&gt; state.</span>error
   },
   extraReducers: (builder) =&gt; {
     builder
       .addCase(getCats.pending, (state) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.loading = true;</span>
-<span class="cstat-no" title="statement not covered" >        state.error = null;</span>
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getCats.rejected, (state, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.loading = false;</span>
-<span class="cstat-no" title="statement not covered" >        state.error = action.error.message ? action.error.message : null;</span>
+        state.loading = false;
+        state.error = action.error.message ? action.error.message <span class="branch-0 cbranch-no" title="branch not covered" >: null;</span>
       })
       .addCase(getCats.fulfilled, (state, action) =&gt; {
 <span class="cstat-no" title="statement not covered" >        state.cats.push(...action.payload);</span>
 <span class="cstat-no" title="statement not covered" >        state.loading = false;</span>
       })
       .addCase(getSpecificCats.pending, (state) =&gt; {
-        state.loading = true;
-        state.error = null;
+<span class="cstat-no" title="statement not covered" >        state.loading = true;</span>
+<span class="cstat-no" title="statement not covered" >        state.error = null;</span>
       })
       .addCase(getSpecificCats.rejected, (state, action) =&gt; {
-        state.loading = false;
-        state.error = action.error.message ? action.error.message <span class="branch-0 cbranch-no" title="branch not covered" >: null;</span>
+<span class="cstat-no" title="statement not covered" >        state.loading = false;</span>
+<span class="cstat-no" title="statement not covered" >        state.error = action.error.message ? action.error.message : null;</span>
       })
       .addCase(getSpecificCats.fulfilled, (state, action) =&gt; {
-        state.cats.push(...action.payload);
-        state.loading = false;
+<span class="cstat-no" title="statement not covered" >        state.cats.push(...action.payload);</span>
+<span class="cstat-no" title="statement not covered" >        state.loading = false;</span>
       });
   }
 });
@@ -292,7 +292,7 @@ export const { selectCats, selectLoading } = catsSlice.selectors;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-31T12:00:39.825Z
+                at 2024-10-31T13:59:11.519Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

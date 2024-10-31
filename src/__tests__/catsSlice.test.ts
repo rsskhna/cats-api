@@ -1,65 +1,63 @@
 import { TCat } from '@utils-types';
 import {
-    catsReducer, deleteCard,
-    getCats,
-    getSpecificCats,
-    initialState, setCatsState
+  catsReducer,
+  deleteCard,
+  getCats,
+  getSpecificCats,
+  initialState,
+  setCatsState
 } from '../services/slices/catsSlice/catsSlice';
 
 const catsData: TCat[] = [
-    {
-        id: '1',
-        url: '1',
-        width: 1,
-        height: 1
-    },
-    {
-        id: '2',
-        url: '2',
-        width: 2,
-        height: 2
-    }
+  {
+    id: '1',
+    url: '1',
+    width: 1,
+    height: 1
+  },
+  {
+    id: '2',
+    url: '2',
+    width: 2,
+    height: 2
+  }
 ];
 
 const breedId: string = 'beng';
 
 describe('catsReducer actions test', () => {
-   it('deleteCard test', () => {
-       const filledState = {
-           ...initialState,
-           cats: catsData
-       };
+  it('deleteCard test', () => {
+    const filledState = {
+      ...initialState,
+      cats: catsData
+    };
 
-       const newState = catsReducer(filledState, deleteCard(1));
-       expect(newState).toEqual(
-           {
-               ...initialState,
-               cats: [
-                   {
-                       id: '1',
-                       url: '1',
-                       width: 1,
-                       height: 1
-                   }
-               ]
-           }
-       );
-   });
+    const newState = catsReducer(filledState, deleteCard(1));
+    expect(newState).toEqual({
+      ...initialState,
+      cats: [
+        {
+          id: '1',
+          url: '1',
+          width: 1,
+          height: 1
+        }
+      ]
+    });
+  });
 
-   it('setCatsState actions test', () => {
-       const filledState = {
-           ...initialState,
-           cats: catsData
-       };
+  it('setCatsState actions test', () => {
+    const filledState = {
+      ...initialState,
+      cats: catsData
+    };
 
-       const newState = catsReducer(filledState, setCatsState([]));
-       expect(newState).toEqual(
-           {
-               ...initialState,
-               cats: []
-           }
-       );
-   });
+    const newState = catsReducer(filledState, setCatsState([]));
+    expect(newState).toEqual({
+      ...initialState,
+      cats: []
+    });
+  });
 });
 
 describe('catsReducer async actions test', () => {
